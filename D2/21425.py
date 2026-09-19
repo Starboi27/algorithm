@@ -1,17 +1,22 @@
-n = int(input())
+t = int(input())
 
-for i in range(1, n + 1):
-    a, b, n = map(int, input().split())
+
+for i in range(1, t + 1):
+    x, y, target = map(int, input().split())
     count = 0
 
-    while a <= n and b <= n:
-        if a < b:
-            a = a + b
-        else:
-            b = b + a
+    while x <= target and y <= target:
         count += 1
+        if x < y:
+            x += y
+        else:
+            y += x
+
     print(count)
 
-# 걍 존나 이해가 안 됨
-# 왜 a랑 b를 왜 따로 비교해서
-# whlie 조건을 줘야 하는지 이해가 안되버림
+
+# while은 조건이 참일 때 실행하고 거짓일 땐 종료한다
+
+# x += y는 x만 바뀌고 y는 그대로
+# y += x는 y만 바뀌고 x는 그대로
+# 즉 어떤 수식을 쓰냐에 따라 값이 나오는 속도가 달림

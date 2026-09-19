@@ -1,9 +1,9 @@
-while True:
+while 1:
+    result = ""
     try:
         n = input()
     except EOFError:
         break
-
     if n == "":
         break
 
