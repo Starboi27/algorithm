@@ -1,21 +1,28 @@
+import sys
+
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_3\sample_input.txt", "r")
+
+
 def BST(node):
+
     global idx
 
     if node >= len(tree):
         return
-    BST(node * 2)  # 왼쪽 자식 방문
-    tree[node] = n[idx]  # 현재 노드에 숫자 넣기
+    BST(2 * node)
+    tree[node] = Node[idx]
     idx += 1
-    BST(node * 2 + 1)  # 오른쪽 자식 방문
+    BST(node * 2 + 1)
 
 
 t = int(input())
 
-for i in range(t):
-    n = list(range(1, (int(input())) + 1))
-    tree = [0] * (len(n) + 1)
+for tc in range(1, t + 1):
+    N = int(input())
+    Node = [i for i in range(1, N + 1)]
+    tree = [0] * (N + 1)
     idx = 0
 
     BST(1)
 
-    print(f"#{i + 1} {tree[1]} {tree[len(n) // 2]}")
+    print(f"#{tc} {tree[1]} {tree[N // 2]}")

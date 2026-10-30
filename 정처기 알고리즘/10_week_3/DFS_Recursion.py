@@ -13,7 +13,6 @@ Data = [
 ]
 visited = [False] * 8
 
-
 def DFS(here):
     print(here)
     visited[here] = True

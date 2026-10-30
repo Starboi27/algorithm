@@ -1,27 +1,25 @@
+import sys
+
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\9_week_3\sample_input.txt", "r")
+
+Data = {"A": 1010, "B": 1011, "C": 1100, "D": 1101, "E": 1110, "F": 1111}
+
 t = int(input())
 
-case = {"A": 10, "B": 11, "C": 12, "D": 13, "E": 14, "F": 15}
-
-for i in range(1, t + 1):
-    result = []
-
+for tc in range(1, t + 1):
     a, b = input().split()
-    for j in b:
-        if j in case:
-            result.append(int(case[j]))
+    solve = []
+
+    for i in b:
+        if i.isdigit() == False:
+            solve.append(str(Data[i]))
         else:
-            result.append(int(j))
-        binary = ""
-
-        for k in result[::-1]:
+            binary = ""
+            num = int(i)
             for _ in range(4):
-                remainer = k % 2
-                quotient = k // 2
-                k = quotient
-                binary = str(remainer) + binary
+                binary = str(num % 2) + binary  # 뒤부터 추가하기 위해서 +=안 씀
+                num //= 2
+            solve.append(binary)
 
-    print(f"#{i} {binary}")
-
-    # binary = str(remainer) + binary 앞에서 부터 추가 됨
-    # 4 3 2 1 이런 식으로? 그래서 for에서 뽑을 때 뒤에서 부터 가져와야 됨
-    # 그래서 result[::-1]로 했음
+    print(f"#{tc} {''.join(solve)}")
+    # join을 쓰려면 변수안 값이 전부 str형태여야 된다, 쌍 따옴표 쓰면 안 됨 뭔 씨발 바라는 게 많아

@@ -3,25 +3,43 @@
 # 새로운 인덱스 생성해야 됨 : now = len(heap) - 1
 # 부모 위치 : i // 2
 
-n = int(input())
+import sys
 
-for i in range(n):
-    m = int(input())
-    numbers = list(map(int, input().split()))
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_2\sample_input.txt", "r")
+
+
+def SUM(node):
+
+    global result
+
+    if node <= 0:
+        return
+    SUM(node // 2)
+    result += heap[node]
+
+    return result
+
+
+t = int(input())
+
+for tc in range(1, t + 1):
+    NodeNum = int(input())
+    Nodes = list(map(int, input().split()))
     heap = [0]
 
-    for number in numbers:
-        heap.append(number)
+    for Node in Nodes:
+        heap.append(Node)
         now = len(heap) - 1
 
         while now > 1:
             parent = now // 2
 
-            if heap[parent] <= heap[now]:
+            if heap[parent] < heap[now]:
                 break
 
             heap[parent], heap[now] = heap[now], heap[parent]
-
             now = parent
+    result = 0
+    lastNode = (len(heap) - 1) // 2
 
-    print(heap)
+    print(f"#{tc} {SUM(lastNode)}")

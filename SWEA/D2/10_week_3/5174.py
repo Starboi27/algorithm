@@ -1,36 +1,36 @@
-# DFS로 탐색해 노드 개수 구하기
+# DFS
+
+import sys
+
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_3\sample_input.txt", "r")
 
 
-# 1 : 6
-# 2 : 1 5
-# 3 : 0
-# 4 : 0
-# 5 : 3
-# 6 : 4
-def dfs(here):
-    visited[here] = True
+def DFS(here):
     count = 1
-    for next in MyMap[here]:
+    visited[here] = True
 
+    for next in graph[here]:
         if not visited[next]:
-            count += dfs(next)
+            count += DFS(next)
 
     return count
 
 
 t = int(input())
 
+
 for tc in range(1, t + 1):
-    Edgenum, NodeNum = map(int, input().split())
-    MyMap = [[] for i in range(Edgenum + 2)]
-    visited = [False] * (len(MyMap) + 2)
+    E, N = map(int, input().split())
+    node = list(map(int, input().split()))
+    visited = [False] * (E + 2)
 
-    edges = list(map(int, input().split()))
+    graph = [[] for _ in range(E + 2)]  # 인덱스를 1부터 쓰기 위해 +2
 
-    for i in range(0, len(edges), 2):
-        start = edges[i]
-        stop = edges[i + 1]
+    for i in range(E):
+        start = node[i * 2]
+        end = node[i * 2 + 1]
 
-        MyMap[start].append(stop)
+        graph[start].append(end)
 
-    print(f"#{tc} {dfs(NodeNum)}")
+
+    print(f"#{tc} {DFS(N)}")
