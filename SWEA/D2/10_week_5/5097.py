@@ -8,8 +8,8 @@ for tc in range(1, t + 1):
     N, M = map(int, input().split())
     Queue = list(map(int, input().split()))
 
-    for i in range(M):
-        here = Queue.pop(0)
-        Queue.append(here)
+    for round in range(M):
+        temp = Queue.pop(0)
+        Queue.append(temp)
 
-    print(f"#{tc} {Queue[0]}")
+    print(f"#{tc} {Queue.pop(0)}")

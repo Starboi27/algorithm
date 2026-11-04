@@ -4,26 +4,27 @@ sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_5\input.txt", "r"
 
 
 def DFS():
-    stack = [(1, 0, visited)]  # [(1, 0, [0, 0, 0, 0])]
+    stack.append((0, 0, [False] * N))
     min_sum = float("inf")
 
     while stack:
-        here, total, current_visited = stack.pop()
-        # here = 1, total = 0, current_visited = [0, 0, 0, 0]
+        row, total, visited = stack.pop()
+
         if total >= min_sum:
             continue
-        if here > N:
+
+        if row == N:
             min_sum = total
             continue
 
-        for i in range(1, N + 1):
-            if current_visited[i] == 0:
-                new_visited = current_visited.copy()
-                new_visited[i] = 1
+        for col in range(N):
+            if not visited[col]:
+                new_visited = visited.copy()
+                new_visited[col] = True
 
-                new_total = total + array[here][i - 1]
+                new_total = total + data[row][col]
 
-                stack.append((here + 1, new_total, new_visited))
+                stack.append((row + 1, new_total, new_visited))
 
     return min_sum
 
@@ -32,14 +33,14 @@ t = int(input())
 
 for tc in range(1, t + 1):
     N = int(input())
-    visited = [0] * (N + 1)
-    array = [[] for _ in range(N + 1)]
 
-    for i in range(N):
-        array[i + 1] = list(map(int, input().split()))
+    stack = []
+    data = [[] for _ in range(N)]
 
-    print(array)
+    for TN in range(N):
+        number = list(map(int, input().split()))
+        data[TN].extend(number)
 
     result = DFS()
 
-    print(f"#{tc} {result}")
+print(data, result)

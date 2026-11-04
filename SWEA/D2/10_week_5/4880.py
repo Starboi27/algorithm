@@ -3,46 +3,43 @@ import sys
 sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_5\input.txt", "r")
 
 
-def winner(left, right):
-    left_card = card_list[left][0]
-    right_card = card_list[right][0]
+def 승부(left, right):
+    if candidate == 1:
+        return
 
-    if left_card == right_card:
+    if candidate[left] == candidate[right]:
         return min(left, right)
 
-    if left_card == 1 and right_card == 3:
+    if candidate[left] == 1 and candidate[right] == 3:
+        return left
+    elif candidate[left] == 2 and candidate[right] == 1:
+        return left
+    elif candidate[left] == 3 and candidate[right] == 2:
+        return left
+    else:
+        return right
+
+
+def 토너먼트(left, right):
+    if left == right:  # left랑 right의 값이 같을 때 값 리턴
         return left
 
-    if left_card == 2 and right_card == 1:  # 바위 vs 가위
-        return left
+    mid = (left + right) // 2
 
-    if left_card == 3 and right_card == 2:  # 보 vs 바위
-        return left
+    left_candidate = 토너먼트(left, mid)
+    right_candidate = 토너먼트(mid + 1, right)
 
-    return right
-
-
-def tournament(start, end):
-    if start == end:
-        return start
-
-    mid = (start + end) // 2
-
-    left = tournament(start, mid)
-    right = tournament(mid + 1, end)
-
-    return winner(left, right)
+    return 승부(left_candidate, right_candidate)
 
 
 t = int(input())
+# 1: 가위
+# 2: 바위
+# 3: 보
 
 for tc in range(1, t + 1):
     N = int(input())
-    card_list = [[] for _ in range(N + 1)]
-    card = list(map(int, input().split()))
-    for i in range(N):
-        card_list[i + 1].append(card[i])
+    candidate = list(map(int, input().split()))
 
-    result = tournament(1, N)
-
-    print(f"#{tc} {result}")
+    result = 토너먼트(0, N - 1)
+    print(result)
