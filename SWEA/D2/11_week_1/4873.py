@@ -1,6 +1,6 @@
 import sys
 
-sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\11_week_1\input.txt", "r")
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\10_week_5\input.txt", "r")
 
 t = int(input())
 
