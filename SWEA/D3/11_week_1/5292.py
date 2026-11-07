@@ -17,3 +17,6 @@ for tc in range(1, t + 1):
             count += 1
 
     print(f"#{tc} {count}")
+
+
+# 복습

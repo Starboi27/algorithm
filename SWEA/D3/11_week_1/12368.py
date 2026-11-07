@@ -13,3 +13,5 @@ for tc in range(1, t + 1):
         result = (n + m) % 24
 
     print(f"#{tc} {result}")
+
+# 복습

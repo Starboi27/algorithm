@@ -15,3 +15,5 @@ for tc in range(1, t + 1):
         result = odd + even
 
     print(f"#{tc} {result}")
+
+# 복습

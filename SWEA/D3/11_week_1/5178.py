@@ -25,3 +25,5 @@ for tc in range(1, t + 1):
     tree()
 
     print(f"#{tc} {node[L]}")
+
+# 복습

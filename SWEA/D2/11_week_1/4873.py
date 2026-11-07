@@ -16,3 +16,5 @@ for tc in range(1, t + 1):
             stack.append(now)
 
     print(f"#{tc} {len(stack)}")
+
+# 복습

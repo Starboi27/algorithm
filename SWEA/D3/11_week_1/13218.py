@@ -10,3 +10,5 @@ for tc in range(1, t + 1):
     if n >= 3:  # 3명도 포함해야지
         solve = n // 3
     print(f"#{tc} {solve}")
+
+# 복습
