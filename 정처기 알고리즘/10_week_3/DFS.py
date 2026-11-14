@@ -51,3 +51,5 @@ def dfs(here):
 
 result = dfs(1)
 print(result)
+
+# 일단 n을 m번 곱해야 됨 재귀로 표현하려면 어떻게 해야 될까

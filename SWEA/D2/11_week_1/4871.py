@@ -1,45 +1,42 @@
 import sys
 
-sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\11_week_1\input.txt", "r")
+sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D2\input.txt", "r")
 
 
-def BFS(S):
-    visited[S] = True
-    distance[S] = 0
-    Queue.append(S)
+def BFS(s, g):
+    queue.append(s)
+    distance[s] = 0
+    visited[s] = True
 
-    while Queue:
-        here = Queue.pop(0)
+    while queue:
+        here = queue.pop(0)
 
         for next in node[here]:
             if not visited[next]:
-                visited[next] = True
                 distance[next] = 1 + distance[here]
-                Queue.append(next)
+                visited[next] = True
+                queue.append(next)
 
-    if distance[G] >= 1:
-        return 1
-    else:
+    if distance[g] == -1:
         return 0
+    return 1
 
 
 t = int(input())
 
 for tc in range(1, t + 1):
-    V, E = map(int, input().split())
-    node = [[] for _ in range(V + 1)]
-    Queue = []
-    distance = [-1] * (V + 1)
-    visited = [False] * (V + 1)
+    v, e = map(int, input().split())  # 단방향 노드
+    node = [[] for _ in range(v + 1)]
+    queue = []
+    visited = [False] * (v + 1)
+    distance = [-1] * (v + 1)
 
-    for i in range(E):
-        start, end = map(int, input().split())
-        node[start].append(end)
+    for i in range(e):
+        idx, val = map(int, input().split())
+        node[idx].append(val)
 
-    S, G = map(int, input().split())
+    s, g = map(int, input().split())
 
-    result = BFS(S)
+    result = BFS(s, g)
 
     print(f"#{tc} {result}")
-
-# 복습

@@ -9,13 +9,11 @@ for tc in range(1, t + 1):
     str2 = input()
     result = 0
 
-    for i in str1:
+    for str1_val in str1:
         count = 0
-        for j in str2:
-            if i == j:
+        for str2_val in str2:
+            if str1_val == str2_val:
                 count += 1
-        result = max(result, count)
+                result = max(count, result)
 
     print(f"#{tc} {result}")
-
-# 최댓값 갱신 패턴사용하기

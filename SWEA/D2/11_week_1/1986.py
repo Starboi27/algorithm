@@ -1,19 +1,14 @@
 t = int(input())
 
 for tc in range(1, t + 1):
-
     n = int(input())
 
-    odd, even = 0, 0
+    solve = 0
 
-    for number in range(1, n + 1):
-        if number % 2 == 0:
-            even -= number
+    for i in range(1, n + 1):
+        if i % 2 == 0:  # 짝수
+            solve -= i
         else:
-            odd += number
+            solve += i
 
-        result = odd + even
-
-    print(f"#{tc} {result}")
-
-# 복습
+    print(f"#{tc} {solve}")

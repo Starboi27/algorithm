@@ -10,16 +10,16 @@ for tc in range(1, t + 1):
     set_ = set()
 
     while 1:
-        result = n * count
+        value = str(n * count)
 
-        for number in str(result):
-            set_.add(number)
+        for i in value:
+            set_.add(int(i))
 
         if len(set_) == 10:
             break
 
         count += 1
 
-    print(f"#{tc} {result}")
+    print(set_, n * count)
 
-# 집합 쓰면 풀 수 있쓴
+# 11.09 다시 복습

@@ -3,8 +3,8 @@ import sys
 sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D3\input.txt", "r")
 
 
-def tree():
-    for i in range(N, 1, -1):
+def tree(n):
+    for i in range(n, 1, -1):
         parent = i // 2
         node[parent] += node[i]
 
@@ -12,18 +12,16 @@ def tree():
 t = int(input())
 
 for tc in range(1, t + 1):
-    N, M, L = map(int, input().split())  # 5, 3, 2
+    n, m, l = map(int, input().split())
 
-    node = [0] * (N + 1)
-    stack = []
-    visited = [False] * (N + 1)
+    node = [0] * (n + 1)
 
-    for i in range(M):
-        idx, val = map(int, input().split())
-        node[idx] = val
+    for i in range(m):
+        start, end = map(int, input().split())
+        node[start] = end
 
-    tree()
+    tree(n)
 
-    print(f"#{tc} {node[L]}")
+    print(f"#{tc} {node[l]}")
 
-# 복습
+# 11.07 복습 다시 복습
