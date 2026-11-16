@@ -1,18 +1,18 @@
-def recursive(result, time):
-    if time == M:
-        return result
+def recursive(val, cnt):
+    if m == cnt:
+        return val
 
-    return recursive(result * N, time + 1)
+    current = val * n
+
+    return recursive(current, cnt + 1)
 
 
-t = 10
+t = int(input())
 
 for tc in range(1, t + 1):
-    n = int(input())
-    N, M = map(int, input().split())
+    # n를 m번 곱함
+    n, m = map(int, input().split())
 
-    result = recursive(N, 1)
+    result = recursive(n, 1)
 
     print(f"#{tc} {result}")
-
-# N을 M번 곱함,

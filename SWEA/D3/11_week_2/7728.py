@@ -6,14 +6,11 @@ t = int(input())
 
 for tc in range(1, t + 1):
     n = list(map(int, input().strip()))
-    cnt = 0
-    stack = []
 
-    for number in n:
-        if number not in stack:  # stack에 특정 idx를 확인하는 게 아님
-            cnt += 1
-            stack.append(number)
+    result = [0] * (max(n) + 1)
 
-    print(f"#{tc} {cnt}")
+    for i in n:
+        result[i] = 1
 
+    print(f"#{tc} {sum(result)}")
 # 복습 필요

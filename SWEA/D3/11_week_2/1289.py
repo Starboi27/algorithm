@@ -1,16 +1,15 @@
 t = int(input())
 
 for tc in range(1, t + 1):
-    binary_data = list(map(int, input().strip()))
-    result = 0
+    goal = list(map(int, input().strip()))
     current = 0
+    cnt = 0
 
-    while binary_data:
-        data = binary_data.pop(0)
-        if data != current:
-            result += 1
-            current = data
+    for i in range(len(goal)):
+        if goal[i] != current:
+            cnt += 1
+            current = goal[i]
 
-    print(f"#{tc} {result}")
+    print(f"#{tc} {cnt}")
 
-# tl발 이해가 안 됨
+# 복습 필요 또또

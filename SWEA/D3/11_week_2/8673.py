@@ -3,36 +3,30 @@ import sys
 sys.stdin = open(r"C:\Users\dlckd\알고리즘\SWEA\D3\input.txt", "r")
 
 
-def tournament(players):
-    global solve
-    queue = []
-
-    if len(players) == 1:
-        return solve
-
-    for idx in range(0, len(players), 2):
-        left = players[idx]
-        right = players[idx + 1]
-
-        if left > right:
-            solve += left - right
-            queue.append(left)
-        else:
-            solve += right - left
-            queue.append(right)
-
-    return tournament(queue)
-
-
 t = int(input())
 
 for tc in range(1, t + 1):
     k = int(input())
-    case = list(map(int, input().split()))
-    solve = 0
+    arr = list(map(int, input().split()))
+    result = 0
 
-    result = tournament(case)
+    while len(arr) > 1:
+        winner = []
+
+        for i in range((len(arr) // 2)):  # len = 4
+            left = arr[i * 2]
+            right = arr[(i * 2) + 1]
+
+            if left > right:
+                winner.append(left)
+                result += left - right
+            else:
+                winner.append(right)
+                result += right - left
+
+        arr = winner
 
     print(f"#{tc} {result}")
 
 # 재귀 사용법 복습
+# 근데 stack을 써서 풀자

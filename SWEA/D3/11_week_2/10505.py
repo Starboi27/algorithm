@@ -6,14 +6,20 @@ t = int(input())
 
 for tc in range(1, t + 1):
     n = int(input())
-    data = list(map(int, input().split()))
-    avg = sum(data) // len(data)
+    arr = list(map(int, input().split()))
+
+    avg = 0
     cnt = 0
 
-    for now in data:
-        if now <= avg:
+    for i in arr:
+        avg += i
+    result = avg // n
+
+    for i in arr:
+        if result >= i:
             cnt += 1
 
     print(f"#{tc} {cnt}")
+
 
 # 코드 최적화 복습

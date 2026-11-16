@@ -9,18 +9,18 @@ for tc in range(1, t + 1):
     container = list(map(int, input().split()))
     truck = list(map(int, input().split()))
 
-    result = 0
-
     container.sort(reverse=1)
     truck.sort(reverse=1)
 
-    for capacity in truck:
-        for i in range(len(container)):
-            if capacity >= container[i]:
-                result += container[i]
-                container.pop(i)
+    result = []
+
+    for i in range(m):
+        for j in range(len(container)):
+            if truck[i] >= container[j]:
+                result.append(container[j])
+                container.pop(j)
                 break
 
-    print(f"#{tc} {result}")
+    print(f"#{tc} {sum(result)}")
 
 # 그리디 알고리즘 복습
